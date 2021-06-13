@@ -1,0 +1,49 @@
+@import '../../utilities/variables'
+
+:host-context
+  width: 100%
+
+.header
+  border: 1px solid $border-color
+  height: 52px
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  box-sizing: border-box
+  background-color: $primary-color
+
+.logo
+  background: url('./images/logo.svg') no-repeat center
+  width: 60px
+  height: 29.3px
+  padding: 8px 2.5px 13px 33px
+  cursor: pointer
+
+.nav-menu-button
+  width: 50px
+  height: 100%
+  position: relative
+  cursor: pointer
+  
+.nav-menu-button__elem
+  width: 19px
+  height: 1.6px
+  background-color: $border-color
+  position: absolute
+  top: 25px
+  left: 8px
+  &:before
+    content: ''
+    position: absolute
+    background-color: $border-color
+    width: 26px
+    height: 1.6px
+    top: -7px
+  &:after
+    content: ''
+    position: absolute
+    background-color: $border-color
+    width: 26px
+    height: 1.6px
+    top: 7px
+

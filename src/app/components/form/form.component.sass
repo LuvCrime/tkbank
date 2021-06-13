@@ -1,0 +1,48 @@
+@import '../../utilities/variables'
+
+:host-context
+  width: 100%
+
+.form
+  width: 284px
+  height: 360px
+  margin: 0 auto
+  background-color: $secondary-color
+  display: flex
+  flex-direction: column
+  align-items: center
+  border-radius: 30px
+  justify-content: space-between
+
+.form-inputs
+  display: flex
+  flex-direction: column
+  align-items: center
+
+.form-buttons
+  display: flex
+  flex-direction: row
+  width: 260px
+  height: 40px
+  border-radius: 100px 100px 100px 100px
+  background-color: $primary-color
+  margin-top: 16px
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.08)
+
+.form-buttons__about-service,
+.form-buttons__check-account
+  width: 50%
+  border-radius: 100px 100px 100px 100px
+  border: none
+  background-color: $primary-color
+  font-family: $font
+  font-size: 12px
+  line-height: 14px
+  color: $text-color
+  cursor: pointer
+
+.button_active
+  background: $button-second-color
+  color: $primary-color
+
+

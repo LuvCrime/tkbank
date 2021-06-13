@@ -1,0 +1,13 @@
+<div class="form">
+    <div class="form-buttons">
+      <button class="form-buttons__about-service" [ngClass]="{ 'button_active' : isValue == 1 }" (click)="toggle(1)">О сервисе</button>
+      <button class="form-buttons__check-account" [ngClass]="{ 'button_active' : isValue == 2 }" (click)="toggle(2)">Проверить счет</button>
+    </div>
+    <form class="form-inputs">
+      <input type="number"class="form-inputs__bik-number">
+      <input type="number" class="form-inputs__settlement-account">
+      <input type="checkbox" id="form-inputs__checkbox">
+      <label for="form-inputs__checkbox">Согласен с <span class="terms">условиями</span></label>
+      <button type="submit">Проверить</button>
+    </form>
+</div>
