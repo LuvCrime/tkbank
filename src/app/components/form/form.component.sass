@@ -1,8 +1,5 @@
 @import '../../utilities/variables'
 
-:host-context
-  width: 100%
-
 .form
   width: 284px
   height: 360px
@@ -12,12 +9,17 @@
   flex-direction: column
   align-items: center
   border-radius: 30px
-  justify-content: space-between
+  box-sizing: border-box
+  margin-top: 24px
 
 .form-inputs
   display: flex
   flex-direction: column
-  align-items: center
+  align-items: flex-start
+
+textarea:focus,
+input:focus
+  outline: none
 
 .form-buttons
   display: flex
@@ -26,8 +28,9 @@
   height: 40px
   border-radius: 100px 100px 100px 100px
   background-color: $primary-color
-  margin-top: 16px
+  margin-top: 15px
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.08)
+  margin-bottom: 29px
 
 .form-buttons__about-service,
 .form-buttons__check-account
@@ -37,12 +40,134 @@
   background-color: $primary-color
   font-family: $font
   font-size: 12px
+  text-decoration: none
   line-height: 14px
   color: $text-color
   cursor: pointer
+  display: flex
+  justify-content: center
+  align-items: center
+  flex-wrap: wrap
+  text-align: center
 
 .button_active
   background: $button-second-color
   color: $primary-color
 
+.form-inputs__bik-number,
+.form-inputs__settlement-account
+  width: 248px
+  height: 52px
+  border: 1px solid $border-color
+  color: $text-color
+  font-weight: 350
+  font-size: 14px
+  line-height: 17px
+  border-radius: 4px
+  box-sizing: border-box
+  position: relative
+  padding: 10px 19px 0 19px
+
+.form-inputs__bik-number
+  margin-bottom: 14px
+
+.form-input-wrapper-1,
+.form-input-wrapper-2
+  position: relative
+  width: 248px
+  height: 52px
+
+.form-input-wrapper-1
+  margin-bottom: 16px
+  &::after
+    content: 'БИК'
+    width: 100px
+    height: 20px
+    top: 8px
+    left: 19px
+    position: absolute
+    color: $border-color
+    font-weight: 350
+    font-size: 10px
+    line-height: 12px
+
+.form-input-wrapper-2
+  &::after
+    content: 'Расчётный счёт'
+    width: 100px
+    height: 20px
+    top: 8px
+    left: 19px
+    position: absolute
+    color: $border-color
+    font-weight: 350
+    font-size: 10px
+    line-height: 12px
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button
+  -webkit-appearance: none
+  margin: 0
+
+.form-inputs__label_underlined,
+.form-inputs__label
+  font-weight: bold
+  font-size: 12px
+  line-height: 14px
+  color: $text-color
+
+.form-inputs__label_underlined
+  color: $tertialy-color
+  border-bottom: 1px solid $tertialy-color
+  padding-bottom: 0.3px
+  cursor: pointer
+
+.form-input-checkbox
+  display: flex
+  flex-direction: row
+
+.check-button
+  margin-top: 30px
+
+::ng-deep .mat-checkbox-checked .mat-checkbox-background,
+::ng-deep .mat-checkbox-indeterminate .mat-checkbox-background
+  background-color: $tertialy-color !important
+
+.mat-checkbox
+  margin-bottom: 20px
+
+.error
+  font-weight: 350
+  font-size: 12px
+  line-height: 14px
+  font-family: $font
+  color: $error-color
+  margin-top: 7px
+  border: 1px solid red
+  width: 100%
+  height: 17px
+  visibility: hidden
+
+.show_error
+  visibility: visible
+
+.check-button
+  width: 248px
+  height: 52px
+  border-radius: 42px
+  background: $button-color
+  border: none
+  font-size: 16px
+  line-height: 19px
+  font-family: $font
+  color: $primary-color
+  cursor: pointer
+  transition: background 1s
+  margin: 0 auto
+  margin-top: 15px
+  &:hover
+    background: $button-color__hovered
+  &:disabled
+    background: $border-color
+    cursor: default
 

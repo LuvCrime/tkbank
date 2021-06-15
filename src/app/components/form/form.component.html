@@ -1,13 +1,39 @@
 <div class="form">
-    <div class="form-buttons">
-      <button class="form-buttons__about-service" [ngClass]="{ 'button_active' : isValue == 1 }" (click)="toggle(1)">О сервисе</button>
-      <button class="form-buttons__check-account" [ngClass]="{ 'button_active' : isValue == 2 }" (click)="toggle(2)">Проверить счет</button>
+  <div class="form-buttons">
+    <a routerLink="/about-service" class="form-buttons__about-service" [ngClass]="{ button_active: isButtonValue == 'aboutService' }"
+   >
+      О сервисе
+  </a>
+    <a routerLink="/"
+      class="form-buttons__check-account"
+      [ngClass]="{ button_active: isButtonValue == 'checkAcc' }"
+    >
+      Проверить <br />счет
+    </a>
+  </div>
+  <form class="form-inputs">
+    <div class="form-input-wrapper-1">
+      <input type="text" autocomplete="off" class="form-inputs__bik-number" name="bik" [(ngModel)]="bikValue" (ngModelChange)="changeHandler()"/>
     </div>
-    <form class="form-inputs">
-      <input type="number"class="form-inputs__bik-number">
-      <input type="number" class="form-inputs__settlement-account">
-      <input type="checkbox" id="form-inputs__checkbox">
-      <label for="form-inputs__checkbox">Согласен с <span class="terms">условиями</span></label>
-      <button type="submit">Проверить</button>
-    </form>
+    <div class="form-input-wrapper-2">
+    <input
+      type="text"
+      class="form-inputs__settlement-account"
+      name="set_acc" [(ngModel)]="setAccValue" (ngModelChange)="changeHandler()"
+      autocomplete="off"
+    />
+    </div>
+    <div class="error">Указан неверный номер счета!</div>
+    <div class="form-input-checkbox">
+      <mat-checkbox name="myCheckbox" [(ngModel)]="checked">
+        <label for="form-inputs__checkbox" class="form-inputs__label"
+          >Согласен c<span class="form-inputs__label_underlined" (click)="changeCheckboxVal()">
+            условиями</span
+          ></label
+        >
+      </mat-checkbox>
+    </div>
+    <button type="submit" class="check-button" [disabled]="!isButtonActive" (click)="checkAccount()">Проверить</button>
+  </form>
+
 </div>
