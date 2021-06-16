@@ -1,39 +1,101 @@
 <div class="form">
   <div class="form-buttons">
-    <a routerLink="/about-service" class="form-buttons__about-service" [ngClass]="{ button_active: isButtonValue == 'aboutService' }"
-   >
+    <a
+      routerLink="/about-service"
+      class="form-buttons__about-service"
+      [ngClass]="{ button_active: isButtonValue == 'aboutService' }"
+    >
       О сервисе
-  </a>
-    <a routerLink="/"
+    </a>
+    <a
+      routerLink="/"
       class="form-buttons__check-account"
       [ngClass]="{ button_active: isButtonValue == 'checkAcc' }"
     >
       Проверить <br />счет
     </a>
   </div>
-  <form class="form-inputs">
+
+  <form
+    class="form-inputs"
+    *ngIf="isButtonValue === 'checkAcc'; else aboutService"
+  >
     <div class="form-input-wrapper-1">
-      <input type="text" autocomplete="off" class="form-inputs__bik-number" name="bik" [(ngModel)]="bikValue" (ngModelChange)="changeHandler()"/>
+      <input
+        type="text"
+        autocomplete="off"
+        class="form-inputs__bik-number"
+        name="bik"
+        [(ngModel)]="bikValue"
+        (ngModelChange)="changeHandler()"
+      />
     </div>
     <div class="form-input-wrapper-2">
-    <input
-      type="text"
-      class="form-inputs__settlement-account"
-      name="set_acc" [(ngModel)]="setAccValue" (ngModelChange)="changeHandler()"
-      autocomplete="off"
-    />
+      <input
+        type="text"
+        class="form-inputs__settlement-account"
+        name="set_acc"
+        [(ngModel)]="setAccValue"
+        (ngModelChange)="changeHandler()"
+        autocomplete="off"
+      />
     </div>
-    <div class="error">Указан неверный номер счета!</div>
+    <div class="result">
+      <div *ngIf="resultToShow === 'success'; then success"></div>
+      <div *ngIf="resultToShow === 'error'; then error"></div>
+    </div>
+    <ng-template #error>
+      <div class="error">Указан неверный номер счета!</div>
+    </ng-template>
+    <ng-template #success>
+      <div class="success">Проверка выполнена успешно</div>
+    </ng-template>
+
     <div class="form-input-checkbox">
       <mat-checkbox name="myCheckbox" [(ngModel)]="checked">
         <label for="form-inputs__checkbox" class="form-inputs__label"
-          >Согласен c<span class="form-inputs__label_underlined" (click)="changeCheckboxVal()">
+          >Согласен c<span
+            class="form-inputs__label_underlined"
+            (click)="changeCheckboxVal()"
+          >
             условиями</span
           ></label
         >
       </mat-checkbox>
     </div>
-    <button type="submit" class="check-button" [disabled]="!isButtonActive" (click)="checkAccount()">Проверить</button>
+    <div *ngIf="termsIsShown; then terms"></div>
+    <ng-template #terms>
+      <div class="terms">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
+        sodales, sem sit amet auctor dignissim, felis metus euismod mi, sit amet
+        rhoncus mauris lectus vitae diam. Donec est felis, accumsan ac congue
+        euismod, lacinia et orci. Nulla venenatis, ligula vitae mollis semper,
+        turpis purus porta sapien, quis auctor erat urna a lorem. Aenean nec
+        vestibulum lacus.
+      </div>
+    </ng-template>
+    <button
+      type="submit"
+      class="check-button"
+      [disabled]="!isButtonActive"
+      (click)="checkAccount()"
+    >
+      Проверить
+    </button>
   </form>
 
+  <ng-template #aboutService>
+    <ul class="about-service">
+      <li class="about-service__el">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
+        sodales, sem sit amet auctor dignissim, felis metus euismod mi, sit amet
+        rhoncus mauris lectus vitae diam.
+      </li>
+      <li class="about-service__el">
+        Donec est felis, accumsan ac congue euismod, lacinia et orci. Nulla
+        venenatis, ligula vitae mollis semper, turpis purus porta sapien, quis
+        auctor erat urna a lorem. Aenean nec vestibulum lacus.
+      </li>
+    </ul>
+  </ng-template>
 </div>
